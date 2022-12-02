@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+
+{% block title%}
+    User`s profile
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Your account</h1>
+<div class="d-flex text-muted pt-3">
+    <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="64"
+         height="64" src="{{ user.profile.img.url}}">
+    <p class="pb-3 mb-0 small lh-sm border-bottom">
+        <strong class="d-block text-gray-dark">@{{ user.username }}</strong>
+        {% if user.email %}
+            <b>E-mail: {{ user.email }}</b>
+        {% endif %}
+    </p>
+</div>
+<form method="post" enctype="multipart/form-data" class="form-register mt-4">
+    {% csrf_token %}
+    {{ updateUserForm.as_p }}    <!--  поле как параграфы-->
+    {{ profileForm.as_p }}
+    {{ profileUpdateForm.as_p}}<!--  поле как параграфы-->
+    <button class="btn btn-outline-warning" type="submit">Обновить</button>
+</form>
+{% endblock%}
+
+{% block aside_block%}
+<h4>Интересные статьи</h4>
+
+
+    <img src="https://itproger.com/img/sertificate/sertificate_3000.svg" alt="картинка"
+         class="img-thumbnail mt-3">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
+        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
+        tempore ut, veniam. Amet, ipsam?</p>
+    <a href="#">
+        <button class="btn btn-warning m-2">Узнать больше</button>
+    </a>
+
+    <img src="https://itproger.com/img/courses/1663833928.jpg" alt="картинка"
+         class="img-thumbnail mt-3">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
+        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
+        tempore ut, veniam. Amet, ipsam?</p>
+    <a href="#">
+
+        <button class="btn btn-warning m-2">Узнать больше</button>
+    </a>
+{% endblock %}

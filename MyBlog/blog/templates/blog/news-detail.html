@@ -1,0 +1,58 @@
+{% extends 'blog/base.html' %}
+
+{% block title%}
+    {{ el.title }}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="fs-1">MyBlog Articles </h1>
+
+    <div class="alert alert-light text-black p-3">
+        <h3 class=" pe-5 ">{{ el.title }}</h3>
+        <p class="my-3 w-100">{{ el.text|safe }}</p>
+        <div class="row">
+            <div class="col-2">
+                <img src="{{ el.author.profile.img.url }}" alt="{{ post.author}}" class="user-images">
+            </div>
+
+            <div class="col-10 pt-2">
+                {% if el.author%}
+                    <span class="text-muted">Публикация: {{ el.date|date:'j F y, в H:i'}}</span>
+                    <p style=""><b>Автор: </b><a href="{% url 'user-news' el.author %}">@{{ el.author }}</a></p>
+                {% else %}
+                    <p style="color:grey;">Автор неизвестен. Публикация: {{ el.date|date:'j F y, в H:i'}}</p>
+                {% endif %}
+                <hr>
+                {% if el.author == user %}
+                    <a href="{% url 'news-update' el.id %}" class="btn btn-outline-success btn-sm">Update</a>
+                    <a href="{% url 'news-delete' el.id %}" class="btn btn-outline-warning btn-sm">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock%}
+
+{% block aside_block%}
+<h4>Another articles</h4>
+    <img src="https://itproger.com/img/courses/1663833928.jpg" alt="картинка"
+         class="img-thumbnail mt-3">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
+        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
+        tempore ut, veniam. Amet, ipsam?</p>
+    <a href="#">
+
+        <button class="btn btn-warning m-2">Узнать больше</button>
+    </a>
+
+    <img src="https://itproger.com/img/sertificate/sertificate_3000.svg" alt="картинка"
+         class="img-thumbnail mt-3">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
+        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
+        tempore ut, veniam. Amet, ipsam?</p>
+    <a href="#">
+        <button class="btn btn-warning m-2">Узнать больше</button>
+    </a>
+{% endblock %}

@@ -1,0 +1,37 @@
+body {
+    background-color: #fafafa;
+}
+
+.alert-light {
+    border-color: #bfbfbf;
+}
+
+label {
+    font-weight: bold;
+}
+
+.helptext {
+    opacity: 0.7;
+}
+
+.errorlist {
+    color: red;
+    opacity: .8;
+}
+
+.form-register.auth input, .form-register.auth textarea{
+    display: block;
+    border: 1px solid silver;
+    border-radius: 5px;
+    width: 98%;
+    margin-top: 5px;
+    padding: 1%;
+}
+
+.user-images {
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    border:2px solid black;
+
+}

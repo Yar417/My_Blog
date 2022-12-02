@@ -1,0 +1,73 @@
+{% extends 'blog/base.html' %}
+
+{% block title%}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="fs-1">MyBlog Articles</h1>
+    {% for el in news %}
+    <div class="alert alert-light text-black p-3">
+        <h3 class=" pe-5 ">{{ el.title }}</h3>
+        <p class="my-3 w-100">{{ el.text|striptags|truncatechars:250 }}</p>
+        <div class="row">
+            <div class="col-2">
+                <img src="{{ el.author.profile.img.url }}" alt="{{ post.author}}" class="user-images">
+            </div>
+
+            <div class="col-10 pt-2">
+                {% if el.author%}
+                    <span class="text-muted">Публикация: {{ el.date|date:'j F y, в H:i'}}</span>
+                    <p><b>Автор: </b><a href="{% url 'user-news' el.author %}">@{{ el.author }}</a></p>
+                {% else %}
+                    <p style="color:grey;">Автор неизвестен. Публикация: {{ el.date|date:'j F y, в H:i'}}</p>
+                {% endif %}
+            </div>
+        </div>
+        <a href="{% url 'news-detail' el.id %}" class="btn btn-outline-warning mt-3">Read More</a>
+    </div>
+    {% endfor %}
+
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a href="{% url 'home' %}" class="btn btn-outline-danger">Start</a>
+            <a href="?page={{ page_obj.previous_page_number}}" class="btn btn-outline-danger">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range%}
+            {% if num == page_obj.number%}
+                <button class="btn btn-danger">{{ num }}</button>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a href="?page={{ num }}" class="btn btn-outline-danger">{{ num }}</a>
+            {% endif%}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number}}" class="btn btn-outline-danger">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages}}" class="btn btn-outline-danger">Last</a>
+        {% endif %}
+    {% endif %}
+{% endblock%}
+
+{% block aside_block%}
+<h4>Интересные статьи</h4>
+    <img src="https://itproger.com/img/courses/1663833928.jpg" alt="картинка"
+         class="img-thumbnail mt-3">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
+        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
+        tempore ut, veniam. Amet, ipsam?</p>
+    <a href="#">
+
+        <button class="btn btn-warning m-2">Узнать больше</button>
+    </a>
+
+    <img src="https://itproger.com/img/sertificate/sertificate_3000.svg" alt="картинка"
+         class="img-thumbnail mt-3">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
+        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
+        tempore ut, veniam. Amet, ipsam?</p>
+    <a href="#">
+        <button class="btn btn-warning m-2">Узнать больше</button>
+    </a>
+{% endblock %}
