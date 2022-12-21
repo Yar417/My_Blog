@@ -12,11 +12,11 @@
         <h3 class=" pe-5 ">{{ el.title }}</h3>
         <p class="my-3 w-100">{{ el.text|striptags|truncatechars:250 }}</p>
         <div class="row">
-            <div class="col-2">
-                <img src="{{ el.author.profile.img.url }}" alt="{{ post.author}}" class="user-images">
+            <div class="col-sm-auto col-md-2 ">
+                <img src="{{ el.author.profile.img.url }}" alt="{{ post.author }}" class="user-images">
             </div>
 
-            <div class="col-10 pt-2">
+            <div class="col-sm-auto col-10-md  pt-2">
                 {% if el.author%}
                     <span class="text-muted">Публикация: {{ el.date|date:'j F y, в H:i'}}</span>
                     <p><b>Автор: </b><a href="{% url 'user-news' el.author %}">@{{ el.author }}</a></p>
@@ -51,23 +51,5 @@
 {% endblock%}
 
 {% block aside_block%}
-<h4>Интересные статьи</h4>
-    <img src="https://itproger.com/img/courses/1663833928.jpg" alt="картинка"
-         class="img-thumbnail mt-3">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
-        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
-        tempore ut, veniam. Amet, ipsam?</p>
-    <a href="#">
 
-        <button class="btn btn-warning m-2">Узнать больше</button>
-    </a>
-
-    <img src="https://itproger.com/img/sertificate/sertificate_3000.svg" alt="картинка"
-         class="img-thumbnail mt-3">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
-        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
-        tempore ut, veniam. Amet, ipsam?</p>
-    <a href="#">
-        <button class="btn btn-warning m-2">Узнать больше</button>
-    </a>
 {% endblock %}

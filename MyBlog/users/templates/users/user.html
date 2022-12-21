@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="mb-3">Sign in</h1>
+    <h2 class="mb-3">Sign in</h2>
     <div class="alert alert-light text-black p-3">
         <form method="post" class="form-register auth">
         {% csrf_token %}
-            {{ form.as_p }}    <!--  поле как параграфы-->
+            {{ form.as_p }}
             <button class="btn btn-outline-warning" type="submit">Sign in</button>
             <hr>
             <p>Not registered? <a href="{% url 'reg' %}"> Registration</a></p>
@@ -21,25 +21,5 @@
 {% endblock%}
 
 {% block aside_block%}
-<h4>Интересные статьи</h4>
 
-
-    <img src="https://itproger.com/img/sertificate/sertificate_3000.svg" alt="картинка"
-         class="img-thumbnail mt-3">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
-        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
-        tempore ut, veniam. Amet, ipsam?</p>
-    <a href="#">
-        <button class="btn btn-warning m-2">Узнать больше</button>
-    </a>
-
-    <img src="https://itproger.com/img/courses/1663833928.jpg" alt="картинка"
-         class="img-thumbnail mt-3">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
-        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
-        tempore ut, veniam. Amet, ipsam?</p>
-    <a href="#">
-
-        <button class="btn btn-warning m-2">Узнать больше</button>
-    </a>
 {% endblock %}

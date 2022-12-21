@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block content %}
-
     <h2 class="">All @{{ view.kwargs.username }}`s articles </h2>
     <h4 class="mb-4">Number of articles by the author: {{page_obj.paginator.count}}</h4>
     {% for el in news %}
@@ -53,23 +52,5 @@
 {% endblock%}
 
 {% block aside_block%}
-<h4>Интересные статьи</h4>
-    <img src="https://itproger.com/img/courses/1663833928.jpg" alt="картинка"
-         class="img-thumbnail mt-3">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
-        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
-        tempore ut, veniam. Amet, ipsam?</p>
-    <a href="#">
 
-        <button class="btn btn-warning m-2">Узнать больше</button>
-    </a>
-
-    <img src="https://itproger.com/img/sertificate/sertificate_3000.svg" alt="картинка"
-         class="img-thumbnail mt-3">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid autem consequuntur dolore
-        doloribus facilis impedit in iste iusto labore pariatur praesentium quae, quasi quisquam quod
-        tempore ut, veniam. Amet, ipsam?</p>
-    <a href="#">
-        <button class="btn btn-warning m-2">Узнать больше</button>
-    </a>
 {% endblock %}

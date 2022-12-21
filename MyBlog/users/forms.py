@@ -13,7 +13,7 @@ class UserRegisterForm(UserCreationForm):
     username = forms.CharField(
         required=True,
         label='Account Name',
-        help_text='Don`t use "@, /, ?, !, \"',
+        help_text='Don`t use "@, /, ?, !, _"',
         widget=forms.TextInput(attrs={'class': 'form-control',
                                       'placeholder': 'Account login'
                                       })
@@ -22,7 +22,7 @@ class UserRegisterForm(UserCreationForm):
     password1 = forms.CharField(
         required=True,
         label='Insert password',
-        help_text='Use at least 6 characters',
+        help_text='Use at least 8 characters',
         widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
     password2 = forms.CharField(
